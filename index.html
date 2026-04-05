@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holly Akati — Biomedical AI Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #fdf9f0;
+    --bg2:         #f4ede0;
+    --bg3:         #ece4d4;
+    --card:        #fffdf7;
+    --rose:        #a04f6a;
+    --rose-hover:  #8a3f58;
+    --rose-soft:   #f5eaef;
+    --rose-border: rgba(160,79,106,0.18);
+    --lavender:    #7a5fa0;
+    --lav-soft:    #f0ecf8;
+    --lav-border:  rgba(122,95,160,0.2);
+    --text:        #1e1a1c;
+    --text-muted:  #6b5a62;
+    --text-dim:    #a8969e;
+    --border:      rgba(0,0,0,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(160,79,106,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(160,79,106,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(253,249,240,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--rose);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rose); }
+
+  /* ── Layout ── */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .section-wrap { padding: 6rem 3rem; }
+
+  .section-divider { border: none; border-top: 1px solid var(--border); }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--rose);
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 1.0;
+    color: var(--text);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.1s forwards;
+  }
+
+  .hero-name em { font-style: italic; color: var(--rose); }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 580px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+
+  .hero-pills {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.3s forwards;
+  }
+
+  .pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2rem;
+    border: 1px solid var(--rose-border);
+    color: var(--rose);
+    letter-spacing: 0.06em;
+    background: var(--rose-soft);
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.4s forwards;
+  }
+
+  .btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.75rem 1.75rem;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    border-radius: 0.35rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary { background: var(--rose); color: #fff; font-weight: 500; }
+  .btn-primary:hover { background: var(--rose-hover); }
+  .btn-ghost { border: 1px solid var(--rose-border); color: var(--rose); }
+  .btn-ghost:hover { background: var(--rose-soft); }
+
+  /* ── Section header ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--rose);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--rose-border);
+  }
+
+  .section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    color: var(--text);
+  }
+
+  /* ── About ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.25rem; }
+  .about-text strong { color: var(--text); font-weight: 500; }
+
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .stat-card:hover { border-color: var(--rose-border); background: var(--rose-soft); }
+
+  .stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.5rem;
+    color: var(--rose);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Timeline ── */
+  .timeline { position: relative; padding-left: 2rem; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.5rem; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--rose-border), transparent);
+  }
+
+  .timeline-item { position: relative; margin-bottom: 3rem; padding-left: 1.5rem; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem; top: 0.45rem;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--rose);
+    box-shadow: 0 0 0 3px var(--rose-soft);
+  }
+
+  .timeline-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--rose);
+    letter-spacing: 0.08em;
+  }
+
+  .timeline-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 2rem;
+    background: var(--lav-soft);
+    color: var(--lavender);
+    border: 1px solid var(--lav-border);
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-title { font-size: 1.1rem; font-weight: 500; color: var(--text); margin-bottom: 0.25rem; }
+  .timeline-org { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .timeline-bullets { list-style: none; }
+
+  .timeline-bullets li {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .timeline-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--rose-border);
+    font-size: 0.8rem;
+    top: 0.05rem;
+  }
+
+  /* ── Projects ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.85rem;
+    padding: 1.75rem;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--rose), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .project-card:hover {
+    border-color: var(--rose-border);
+    box-shadow: 0 6px 28px rgba(160,79,106,0.07);
+    transform: translateY(-2px);
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--rose);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .project-tag.hackathon { color: var(--lavender); }
+
+  .award-badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.5rem;
+    background: var(--lav-soft);
+    border: 1px solid var(--lav-border);
+    border-radius: 2rem;
+    color: var(--lavender);
+  }
+
+  .project-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+  .stack-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    padding: 0.2rem 0.55rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--rose);
+    text-decoration: none;
+    margin-top: 1rem;
+    letter-spacing: 0.05em;
+    transition: gap 0.2s;
+  }
+
+  .project-link:hover { gap: 0.7rem; }
+
+  /* ── Skills ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .skill-group {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.85rem;
+    padding: 1.5rem;
+  }
+
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--rose);
+    letter-spacing: 0.12em;
+    margin-bottom: 1.25rem;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .skill-chip {
+    font-size: 0.82rem;
+    padding: 0.3rem 0.8rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+
+  .skill-chip:hover {
+    border-color: var(--rose-border);
+    color: var(--rose);
+    background: var(--rose-soft);
+  }
+
+  /* ── Contact ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-text { font-size: 1.05rem; color: var(--text-muted); line-height: 1.85; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.85rem; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+
+  .contact-item:hover { border-color: var(--rose-border); background: var(--rose-soft); }
+
+  .contact-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--rose);
+    min-width: 3.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .contact-val { font-size: 0.9rem; color: var(--text-muted); }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 0 1.5rem; }
+    .section-wrap { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">holly akati</a>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#experience">research</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <p class="hero-label">// biomedical ai researcher</p>
+  <h1 class="hero-name">Holly <em>Akati</em></h1>
+  <p class="hero-tagline">
+    Building AI systems at the intersection of neuroimaging, surgical robotics, and clinical data science. Graduating GWU December 2026.
+  </p>
+  <div class="hero-pills">
+    <span class="pill">neuroimaging</span>
+    <span class="pill">surgical robotics</span>
+    <span class="pill">medical image segmentation</span>
+    <span class="pill">clinical NLP</span>
+    <span class="pill">wearable systems</span>
+  </div>
+  <div class="hero-links">
+    <a href="https://github.com/hollyakt" target="_blank" class="btn btn-primary">GitHub ↗</a>
+    <a href="mailto:holly.akati@gwu.edu" class="btn btn-ghost">Contact me</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- About -->
+<div id="about" class="section-wrap">
+  <section>
+    <p class="section-label fade-in">01 — about</p>
+    <h2 class="section-title fade-in">Researcher, builder,<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">problem solver.</em></h2>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>I'm a Health Data Science senior at <strong>George Washington University's Milken Institute School of Public Health</strong>, working at the intersection of machine learning, clinical neuroscience, and medical imaging.</p>
+        <p>My research spans pediatric neuroimaging pipelines, real-time seizure detection, and brain tumor segmentation — all with the goal of improving clinical decision-making through better AI tools.</p>
+        <p>I'm currently a research intern at <strong>Children's National Hospital</strong>, where I build automated preprocessing and segmentation pipelines for longitudinal sEEG and fMRI datasets. I'm a <strong>native French speaker</strong> and have competed in — and won — national healthcare hackathons.</p>
+      </div>
+      <div class="stats-grid fade-in">
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">years clinical research</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2×</div>
+          <div class="stat-label">hackathon winner</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">99%</div>
+          <div class="stat-label">CNN seizure detection accuracy</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">80%</div>
+          <div class="stat-label">labeling efficiency improvement</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="section-divider">
+
+<!-- Experience -->
+<div id="experience" class="section-wrap">
+  <section>
+    <p class="section-label fade-in">02 — research experience</p>
+    <h2 class="section-title fade-in">Where I've done<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">the work.</em></h2>
+    <div class="timeline fade-in">
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">Jan 2026 — Present</span>
+          <span class="timeline-badge">current</span>
+        </div>
+        <div class="timeline-title">Research Intern — Pediatric Neurology</div>
+        <div class="timeline-org">Children's National Hospital · Washington, DC</div>
+        <ul class="timeline-bullets">
+          <li>Build automated preprocessing, segmentation, and visualization pipelines for large sEEG and fMRI neuroimaging datasets supporting longitudinal clinical research</li>
+          <li>Perform comprehensive literature reviews on pediatric seizure mechanisms and brain behavior</li>
+          <li>Contribute code to a manuscript currently in preparation (second author)</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">Jun 2025 — Jul 2025</span>
+        </div>
+        <div class="timeline-title">Data Analysis Intern</div>
+        <div class="timeline-org">Caremetx LLC · Bethesda, MD</div>
+        <ul class="timeline-bullets">
+          <li>Analyzed large patient insurance datasets to deliver business intelligence insights guiding strategic decisions</li>
+          <li>Improved labeling efficiency by 80% through rigorous data cleaning and validation protocols</li>
+          <li>Implemented new KPI tracking systems for insurance processing cycles while maintaining strict HIPAA compliance</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">Nov 2023 — May 2024</span>
+        </div>
+        <div class="timeline-title">Research Intern — Pediatric Neurosurgery</div>
+        <div class="timeline-org">Children's National Hospital · Washington, DC</div>
+        <ul class="timeline-bullets">
+          <li>Collaborated with data scientists to develop a ML model for brain image segmentation, improving diagnostic accuracy by 5%</li>
+          <li>Synthesized 20+ academic articles on robotic applications in endoscopic surgery to inform clinical strategy</li>
+          <li>Built segmentation protocols for HSI and medical imaging datasets to optimize pediatric brain tumor identification</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<hr class="section-divider">
+
+<!-- Projects -->
+<div id="projects" class="section-wrap">
+  <section>
+    <p class="section-label fade-in">03 — projects</p>
+    <h2 class="section-title fade-in">Things I've<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">built.</em></h2>
+    <div class="projects-grid">
+
+      <div class="project-card fade-in">
+        <div class="project-tag hackathon">HARVARD HACK RARE <span class="award-badge">winner</span></div>
+        <div class="project-title">Real-Time Seizure Detection System</div>
+        <div class="project-desc">CNN model achieving 99% accuracy in real-time seizure classification, integrated into a full hardware-software pipeline for a wearable device prototype. End-to-end system from signal acquisition to alert.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">TensorFlow</span>
+          <span class="stack-tag">CNN</span>
+          <span class="stack-tag">Signal Processing</span>
+          <span class="stack-tag">Embedded Systems</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-tag hackathon">CORNELL HEALTHCARE HACKATHON <span class="award-badge">winner</span></div>
+        <div class="project-title">Maternal Health Monitoring Patch</div>
+        <div class="project-desc">Non-invasive lab-on-a-chip patch that monitors hormonal changes during pregnancy using sweat as a biomarker. Connected to a physician-facing app for early complication detection and improved maternal outcomes.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Lab-on-a-Chip</span>
+          <span class="stack-tag">Biosensors</span>
+          <span class="stack-tag">Mobile App</span>
+          <span class="stack-tag">Biomarker Analysis</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-tag">NEUROIMAGING PIPELINE</div>
+        <div class="project-title">NeuroSeg: Brain Tumor Segmentation</div>
+        <div class="project-desc">End-to-end UNet segmentation pipeline trained on the BraTS public dataset. Multimodal MRI input with tumor subregion classification and interactive Streamlit demo for real-time inference.</div>
+        <div class="project-stack">
+          <span class="stack-tag">PyTorch</span>
+          <span class="stack-tag">UNet</span>
+          <span class="stack-tag">MONAI</span>
+          <span class="stack-tag">nibabel</span>
+          <span class="stack-tag">Streamlit</span>
+        </div>
+        <a href="https://github.com/hollyakt/neuroseg" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-tag">EEG ANALYSIS</div>
+        <div class="project-title">SeizureNet: Open EEG Classifier</div>
+        <div class="project-desc">Reproducible seizure detection pipeline trained on CHB-MIT public dataset. Benchmarks CNN architecture against SVM and Random Forest baselines with rigorous cross-validation and clinical performance metrics.</div>
+        <div class="project-stack">
+          <span class="stack-tag">PyTorch</span>
+          <span class="stack-tag">MNE</span>
+          <span class="stack-tag">scikit-learn</span>
+          <span class="stack-tag">PhysioNet</span>
+        </div>
+        <a href="https://github.com/hollyakt/seizurenet" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-tag">CLINICAL NLP</div>
+        <div class="project-title">Clinical Entity Extraction Pipeline</div>
+        <div class="project-desc">Fine-tuned ClinicalBERT for named entity recognition on MIMIC-III clinical notes, extracting diagnoses, medications, and procedures. Compared against general BERT baseline with F1 evaluation across entity types.</div>
+        <div class="project-stack">
+          <span class="stack-tag">HuggingFace</span>
+          <span class="stack-tag">BioBERT</span>
+          <span class="stack-tag">spaCy</span>
+          <span class="stack-tag">MIMIC-III</span>
+          <span class="stack-tag">Python</span>
+        </div>
+        <a href="https://github.com/hollyakt/clinical-nlp" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-tag">SURGICAL AI</div>
+        <div class="project-title">Surgical Tool Tracking System</div>
+        <div class="project-desc">Real-time instrument detection and temporal tracking across laparoscopic video frames using the Cholec80 dataset. Extends frame-level detection with multi-frame tracking for continuous surgical workflow analysis.</div>
+        <div class="project-stack">
+          <span class="stack-tag">YOLOv8</span>
+          <span class="stack-tag">OpenCV</span>
+          <span class="stack-tag">PyTorch</span>
+          <span class="stack-tag">Cholec80</span>
+        </div>
+        <a href="https://github.com/hollyakt/surgical-tool-tracker" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<hr class="section-divider">
+
+<!-- Skills -->
+<div class="section-wrap">
+  <section>
+    <p class="section-label fade-in">04 — skills</p>
+    <h2 class="section-title fade-in">Technical<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">toolkit.</em></h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-group">
+        <div class="skill-group-title">MACHINE LEARNING</div>
+        <div class="skill-tags">
+          <span class="skill-chip">PyTorch</span>
+          <span class="skill-chip">TensorFlow</span>
+          <span class="skill-chip">scikit-learn</span>
+          <span class="skill-chip">CNN</span>
+          <span class="skill-chip">UNet</span>
+          <span class="skill-chip">Transformers</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">LANGUAGES & DATA</div>
+        <div class="skill-tags">
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">R</span>
+          <span class="skill-chip">MATLAB</span>
+          <span class="skill-chip">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">BIOMEDICAL</div>
+        <div class="skill-tags">
+          <span class="skill-chip">sEEG/fMRI</span>
+          <span class="skill-chip">Image Segmentation</span>
+          <span class="skill-chip">HSI Imaging</span>
+          <span class="skill-chip">NLP for Healthcare</span>
+          <span class="skill-chip">MIMIC-III</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">TOOLS & VIZ</div>
+        <div class="skill-tags">
+          <span class="skill-chip">Tableau</span>
+          <span class="skill-chip">Streamlit</span>
+          <span class="skill-chip">Git</span>
+          <span class="skill-chip">Plotly</span>
+          <span class="skill-chip">Jupyter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="section-divider">
+
+<!-- Contact -->
+<div id="contact" class="section-wrap">
+  <section>
+    <p class="section-label fade-in">05 — contact</p>
+    <h2 class="section-title fade-in">Let's<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">connect.</em></h2>
+    <div class="contact-grid fade-in">
+      <div class="contact-text">
+        I'm always open to conversations about biomedical AI research, collaboration, and opportunities at the intersection of clinical data science and surgical systems. Reach out anytime.
+      </div>
+      <div class="contact-links">
+        <a href="mailto:holly.akati@gwu.edu" class="contact-item">
+          <span class="contact-icon">email</span>
+          <span class="contact-val">holly.akati@gwu.edu</span>
+        </a>
+        <a href="https://github.com/hollyakt" target="_blank" class="contact-item">
+          <span class="contact-icon">github</span>
+          <span class="contact-val">github.com/hollyakt</span>
+        </a>
+        <a href="https://www.linkedin.com/in/hollyakati/" target="_blank" class="contact-item">
+          <span class="contact-icon">linkedin</span>
+          <span class="contact-val">linkedin.com/in/hollyakati</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>Holly Daisy Akati &middot; Health Data Science &middot; George Washington University &middot; Washington, DC</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
