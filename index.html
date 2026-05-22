@@ -333,22 +333,48 @@
     gap: 1.25rem;
   }
 
-  .projects-subhead {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.12em;
-    margin: 3rem 0 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+  .projects-section-break {
+    margin: 5rem 0 2.5rem;
+    text-align: center;
+    position: relative;
   }
 
-  .projects-subhead::after {
+  .projects-section-break::before,
+  .projects-section-break::after {
     content: '';
-    flex: 1;
+    position: absolute;
+    top: 50%;
     height: 1px;
-    background: var(--border);
+    background: var(--rose-border);
+    width: calc(50% - 9rem);
+  }
+
+  .projects-section-break::before { left: 0; }
+  .projects-section-break::after  { right: 0; }
+
+  .projects-subhead {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--rose);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: var(--bg);
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+  }
+
+  .projects-subhead-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    margin: 0.4rem 0 0;
+    text-align: center;
+    font-style: italic;
+    font-weight: 300;
   }
 
   .project-card {
@@ -732,6 +758,11 @@
     <p class="section-label fade-in">03 — projects</p>
     <h2 class="section-title fade-in">Things I've<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">built.</em></h2>
 
+    <div class="projects-section-break" style="margin-top: 0;">
+      <span class="projects-subhead">Data Science &amp; Analytics</span>
+      <p class="projects-subhead-sub">SQL pipelines, ETL, cloud warehousing, data cleaning</p>
+    </div>
+
     <div class="projects-featured">
 
       <div class="project-card featured fade-in">
@@ -827,14 +858,65 @@
 
     </div>
 
-    <div class="projects-subhead">// research &amp; ML</div>
+    <div class="projects-section-break">
+      <span class="projects-subhead">Research &amp; ML</span>
+      <p class="projects-subhead-sub">Clinical AI — fine-tuning, signal processing, segmentation, and hackathon builds</p>
+    </div>
 
-    <div class="projects-grid">
+    <div class="projects-featured">
+
+      <div class="project-card featured fade-in">
+        <img src="assets/projects/clinical-nlp.png" alt="Clinical NER output showing extracted PROBLEM, TREATMENT, and TEST entities on a sample clinical note" class="project-image" loading="lazy">
+        <div class="project-body">
+          <div class="project-tag">CLINICAL NLP · NER</div>
+          <div class="project-title">Clinical Entity Extraction Pipeline</div>
+          <div class="project-desc">Fine-tuning recipe and inference pipeline for clinical named-entity recognition with the i2b2 2010 schema (problem · treatment · test). Built on ClinicalBERT, with a head-to-head comparison harness against BERT-base. Image shows live NER output on a sample note.</div>
+          <div class="project-results">
+            <span class="result-chip"><strong>31</strong> entities · 3 sample notes</span>
+            <span class="result-chip">i2b2 schema</span>
+            <span class="result-chip">ClinicalBERT</span>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">HuggingFace</span>
+            <span class="stack-tag">ClinicalBERT</span>
+            <span class="stack-tag">spaCy</span>
+            <span class="stack-tag">MIMIC-III</span>
+            <span class="stack-tag">PyTorch</span>
+          </div>
+          <a href="https://github.com/hollyakt/clinical-nlp" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card featured fade-in">
+        <img src="assets/projects/seizurenet.png" alt="Multichannel scalp EEG and band-power feature heatmap from CHB-MIT recording" class="project-image" loading="lazy">
+        <div class="project-body">
+          <div class="project-tag">EEG · SIGNAL PROCESSING</div>
+          <div class="project-title">SeizureNet: Open EEG Classifier</div>
+          <div class="project-desc">Reproducible seizure-detection pipeline targeting CHB-MIT scalp EEG. Benchmarks a CNN against handcrafted-feature ML baselines (SVM, RF, LR) with patient-stratified cross-validation. Image shows real bandpower features computed by the repo's own feature module on a CHB-MIT recording.</div>
+          <div class="project-results">
+            <span class="result-chip"><strong>23</strong> channels · 256 Hz</span>
+            <span class="result-chip"><strong>5</strong> frequency bands</span>
+            <span class="result-chip">Hjorth + spectral features</span>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">MNE</span>
+            <span class="stack-tag">scikit-learn</span>
+            <span class="stack-tag">PhysioNet</span>
+            <span class="stack-tag">Welch PSD</span>
+          </div>
+          <a href="https://github.com/hollyakt/seizurenet" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="projects-grid" style="margin-top: 1.5rem;">
 
       <div class="project-card fade-in">
         <div class="project-tag hackathon">HARVARD HACK RARE <span class="award-badge">winner</span></div>
         <div class="project-title">Real-Time Seizure Detection System</div>
-        <div class="project-desc">CNN model achieving 99% accuracy in real-time seizure classification, integrated into a full hardware-software pipeline for a wearable device prototype. End-to-end system from signal acquisition to alert.</div>
+        <div class="project-desc">CNN model for real-time seizure classification integrated into a full hardware-software pipeline for a wearable device prototype. End-to-end system from signal acquisition to alert.</div>
         <div class="project-stack">
           <span class="stack-tag">Python</span>
           <span class="stack-tag">TensorFlow</span>
@@ -847,7 +929,7 @@
       <div class="project-card fade-in">
         <div class="project-tag hackathon">CORNELL HEALTHCARE HACKATHON <span class="award-badge">winner</span></div>
         <div class="project-title">Maternal Health Monitoring Patch</div>
-        <div class="project-desc">Non-invasive lab-on-a-chip patch that monitors hormonal changes during pregnancy using sweat as a biomarker. Connected to a physician-facing app for early complication detection and improved maternal outcomes.</div>
+        <div class="project-desc">Non-invasive lab-on-a-chip patch that monitors hormonal changes during pregnancy using sweat as a biomarker. Connected to a physician-facing app for early complication detection.</div>
         <div class="project-stack">
           <span class="stack-tag">Lab-on-a-Chip</span>
           <span class="stack-tag">Biosensors</span>
@@ -859,7 +941,7 @@
       <div class="project-card fade-in">
         <div class="project-tag">NEUROIMAGING PIPELINE</div>
         <div class="project-title">NeuroSeg: Brain Tumor Segmentation</div>
-        <div class="project-desc">End-to-end UNet segmentation pipeline trained on the BraTS public dataset. Multimodal MRI input with tumor subregion classification and interactive Streamlit demo for real-time inference.</div>
+        <div class="project-desc">End-to-end U-Net segmentation pipeline trained on the BraTS public dataset. Multimodal MRI input with tumor subregion classification and interactive Streamlit demo.</div>
         <div class="project-stack">
           <span class="stack-tag">PyTorch</span>
           <span class="stack-tag">UNet</span>
@@ -871,36 +953,9 @@
       </div>
 
       <div class="project-card fade-in">
-        <div class="project-tag">EEG ANALYSIS</div>
-        <div class="project-title">SeizureNet: Open EEG Classifier</div>
-        <div class="project-desc">Reproducible seizure detection pipeline trained on CHB-MIT public dataset. Benchmarks CNN architecture against SVM and Random Forest baselines with rigorous cross-validation and clinical performance metrics.</div>
-        <div class="project-stack">
-          <span class="stack-tag">PyTorch</span>
-          <span class="stack-tag">MNE</span>
-          <span class="stack-tag">scikit-learn</span>
-          <span class="stack-tag">PhysioNet</span>
-        </div>
-        <a href="https://github.com/hollyakt/seizurenet" target="_blank" class="project-link">View on GitHub →</a>
-      </div>
-
-      <div class="project-card fade-in">
-        <div class="project-tag">CLINICAL NLP</div>
-        <div class="project-title">Clinical Entity Extraction Pipeline</div>
-        <div class="project-desc">Fine-tuned ClinicalBERT for named entity recognition on MIMIC-III clinical notes, extracting diagnoses, medications, and procedures. Compared against general BERT baseline with F1 evaluation across entity types.</div>
-        <div class="project-stack">
-          <span class="stack-tag">HuggingFace</span>
-          <span class="stack-tag">BioBERT</span>
-          <span class="stack-tag">spaCy</span>
-          <span class="stack-tag">MIMIC-III</span>
-          <span class="stack-tag">Python</span>
-        </div>
-        <a href="https://github.com/hollyakt/clinical-nlp" target="_blank" class="project-link">View on GitHub →</a>
-      </div>
-
-      <div class="project-card fade-in">
         <div class="project-tag">SURGICAL AI</div>
         <div class="project-title">Surgical Tool Tracking System</div>
-        <div class="project-desc">Real-time instrument detection and temporal tracking across laparoscopic video frames using the Cholec80 dataset. Extends frame-level detection with multi-frame tracking for continuous surgical workflow analysis.</div>
+        <div class="project-desc">Real-time instrument detection and temporal tracking across laparoscopic video frames using the Cholec80 dataset. Frame-level detection extended with multi-frame tracking for surgical workflow analysis.</div>
         <div class="project-stack">
           <span class="stack-tag">YOLOv8</span>
           <span class="stack-tag">OpenCV</span>
