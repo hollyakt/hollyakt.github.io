@@ -543,6 +543,7 @@
     <li><a href="#about">about</a></li>
     <li><a href="#experience">research</a></li>
     <li><a href="#projects">projects</a></li>
+    <li><a href="#data">data</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
 </nav>
@@ -560,6 +561,7 @@
     <span class="pill">medical image segmentation</span>
     <span class="pill">clinical NLP</span>
     <span class="pill">wearable systems</span>
+    <span class="pill">SQL & analytics</span>
   </div>
   <div class="hero-links">
     <a href="https://github.com/hollyakt" target="_blank" class="btn btn-primary">GitHub ↗</a>
@@ -741,10 +743,82 @@
 
 <hr class="section-divider">
 
+<!-- Data Science & Analytics -->
+<div id="data" class="section-wrap">
+  <section>
+    <p class="section-label fade-in">04 — data science &amp; analytics</p>
+    <h2 class="section-title fade-in">SQL, pipelines,<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">and analysis.</em></h2>
+    <div class="projects-grid">
+
+      <div class="project-card fade-in">
+        <div class="project-tag">BIBLIOMETRICS</div>
+        <div class="project-title">PubMed Bibliometric Pipeline</div>
+        <div class="project-desc">End-to-end pipeline pulling publication metadata from NCBI Entrez into SQLite, running TF-IDF + k-means topic clustering and emerging-term detection over abstracts, and exposing the data through analytical SQL and a Streamlit dashboard. Built as a small-scale reference implementation of the kind of science-of-science mapping work CSET publishes.</div>
+        <div class="project-stack">
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">Entrez API</span>
+          <span class="stack-tag">scikit-learn</span>
+          <span class="stack-tag">Streamlit</span>
+          <span class="stack-tag">NetworkX</span>
+        </div>
+        <a href="https://github.com/hollyakt/pubmed-bibliometrics" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-tag">ETL / DATA ENGINEERING</div>
+        <div class="project-title">CDC Chronic Disease Indicators ETL</div>
+        <div class="project-desc">Extract → transform → analyze pipeline over CDC's BRFSS Chronic Disease Indicators. Separates raw and curated layers in SQLite, builds conformed dimensions, and runs analytical SQL with CTEs, RANK, PERCENT_RANK, LAG, and AVG OVER ROWS. Includes an Airflow DAG that re-uses the same Python functions as the CLI so scheduled and ad-hoc runs cannot drift.</div>
+        <div class="project-stack">
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">Window Functions</span>
+          <span class="stack-tag">Airflow</span>
+          <span class="stack-tag">Socrata API</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Jupyter</span>
+        </div>
+        <a href="https://github.com/hollyakt/public-health-etl" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-tag">CLOUD ANALYTICS</div>
+        <div class="project-title">NIH Funding Analysis on BigQuery</div>
+        <div class="project-desc">Cloud-connected research-funding analysis with parallel SQL dialects: identical analytical queries written for SQLite (local path) and BigQuery (cloud path) so the cloud path can be reviewed against the local one. Ingests from the NIH RePORTER REST API, loads into BigQuery with WRITE_TRUNCATE idempotency, and demonstrates dialect-specific features (UNNEST, SPLIT) in the BQ flavor.</div>
+        <div class="project-stack">
+          <span class="stack-tag">BigQuery</span>
+          <span class="stack-tag">GCP</span>
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">NIH RePORTER</span>
+          <span class="stack-tag">pandas</span>
+        </div>
+        <a href="https://github.com/hollyakt/cloud-analysis" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-tag">SQL DATA CLEANING</div>
+        <div class="project-title">NYC Taxi 5-Layer Cleaning Pipeline</div>
+        <div class="project-desc">DuckDB pipeline over NYC Yellow Taxi trips that walks the data through profile → clean → dimensions → reshape → analytics. Showcases recursive CTEs (zone hierarchy traversal), Slowly Changing Dimension Type 2 with point-in-time as-of queries, PIVOT / UNPIVOT for wide↔long reshape, IQR-based outlier detection, and an 8-bit data-quality flag bitmask. Reads parquet directly from CloudFront — no pre-download.</div>
+        <div class="project-stack">
+          <span class="stack-tag">DuckDB</span>
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">Recursive CTEs</span>
+          <span class="stack-tag">SCD Type 2</span>
+          <span class="stack-tag">PIVOT / UNPIVOT</span>
+          <span class="stack-tag">Parquet</span>
+        </div>
+        <a href="https://github.com/hollyakt/nyc-taxi-sql-cleaning" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<hr class="section-divider">
+
 <!-- Skills -->
 <div class="section-wrap">
   <section>
-    <p class="section-label fade-in">04 — skills</p>
+    <p class="section-label fade-in">05 — skills</p>
     <h2 class="section-title fade-in">Technical<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">toolkit.</em></h2>
     <div class="skills-grid fade-in">
       <div class="skill-group">
@@ -759,12 +833,37 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">LANGUAGES & DATA</div>
+        <div class="skill-group-title">LANGUAGES</div>
         <div class="skill-tags">
           <span class="skill-chip">Python</span>
+          <span class="skill-chip">SQL</span>
           <span class="skill-chip">R</span>
           <span class="skill-chip">MATLAB</span>
-          <span class="skill-chip">SQL</span>
+          <span class="skill-chip">Bash</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">DATA & SQL</div>
+        <div class="skill-tags">
+          <span class="skill-chip">PostgreSQL</span>
+          <span class="skill-chip">DuckDB</span>
+          <span class="skill-chip">BigQuery</span>
+          <span class="skill-chip">SQLite</span>
+          <span class="skill-chip">Window Functions</span>
+          <span class="skill-chip">CTEs &amp; Recursive CTEs</span>
+          <span class="skill-chip">SCD Type 2</span>
+          <span class="skill-chip">PIVOT / UNPIVOT</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">DATA ENGINEERING</div>
+        <div class="skill-tags">
+          <span class="skill-chip">ETL / ELT</span>
+          <span class="skill-chip">Airflow</span>
+          <span class="skill-chip">dbt-style layering</span>
+          <span class="skill-chip">Data Quality</span>
+          <span class="skill-chip">Parquet</span>
+          <span class="skill-chip">REST &amp; Socrata APIs</span>
         </div>
       </div>
       <div class="skill-group">
@@ -782,9 +881,10 @@
         <div class="skill-tags">
           <span class="skill-chip">Tableau</span>
           <span class="skill-chip">Streamlit</span>
-          <span class="skill-chip">Git</span>
           <span class="skill-chip">Plotly</span>
           <span class="skill-chip">Jupyter</span>
+          <span class="skill-chip">Git</span>
+          <span class="skill-chip">GCP</span>
         </div>
       </div>
     </div>
@@ -796,7 +896,7 @@
 <!-- Contact -->
 <div id="contact" class="section-wrap">
   <section>
-    <p class="section-label fade-in">05 — contact</p>
+    <p class="section-label fade-in">06 — contact</p>
     <h2 class="section-title fade-in">Let's<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">connect.</em></h2>
     <div class="contact-grid fade-in">
       <div class="contact-text">
