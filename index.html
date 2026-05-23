@@ -911,6 +911,54 @@
 
     </div>
 
+    <div class="projects-featured" style="margin-top: 1.5rem;">
+
+      <div class="project-card featured fade-in">
+        <img src="assets/projects/neuroseg.png" alt="Brain region segmentation using the MNI152 template and Harvard-Oxford cortical atlas, shown on three orthogonal slices" class="project-image" loading="lazy">
+        <div class="project-body">
+          <div class="project-tag">3D MRI · SEGMENTATION</div>
+          <div class="project-title">NeuroSeg: Brain Segmentation Pipeline</div>
+          <div class="project-desc">3D U-Net segmentation pipeline configured for BraTS tumor subregions (whole tumor / tumor core / enhancing tumor). Ships an open-data demo path that runs end-to-end with no credentialed access — using nilearn's MNI152 T1 template and the Harvard-Oxford cortical atlas. Image is a real run on the open path.</div>
+          <div class="project-results">
+            <span class="result-chip">MNI152 T1 + Harvard-Oxford</span>
+            <span class="result-chip"><strong>4</strong> lobe classes</span>
+            <span class="result-chip">3D U-Net (MONAI)</span>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">MONAI</span>
+            <span class="stack-tag">nilearn</span>
+            <span class="stack-tag">nibabel</span>
+            <span class="stack-tag">Streamlit</span>
+          </div>
+          <a href="https://github.com/hollyakt/neuroseg" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card featured fade-in">
+        <img src="assets/projects/surgical.png" alt="YOLOv8n detections on four Kvasir-Instrument endoscopy frames with bounding boxes around medical instruments and confidence scores" class="project-image" loading="lazy">
+        <div class="project-body">
+          <div class="project-tag">YOLOv8 · DETECTION · TRACKING</div>
+          <div class="project-title">Medical Instrument Detection & Tracking</div>
+          <div class="project-desc">Detection + multi-object tracking pipeline (YOLOv8 + ByteTrack) for surgical and endoscopic video. Demo path fine-tunes yolov8n on the open Kvasir-Instrument dataset (590 GI-endoscopy frames with instrument bounding boxes); full pipeline configured for Cholec80's 7-class laparoscopic detection.</div>
+          <div class="project-results">
+            <span class="result-chip"><strong>mAP@50 0.957</strong> on val</span>
+            <span class="result-chip">Precision <strong>0.95</strong> · Recall <strong>0.93</strong></span>
+            <span class="result-chip">Kvasir-Instrument (open)</span>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">YOLOv8</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">ByteTrack</span>
+            <span class="stack-tag">Kvasir-Instrument</span>
+          </div>
+          <a href="https://github.com/hollyakt/surgical-tool-tracker" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+
     <div class="projects-grid" style="margin-top: 1.5rem;">
 
       <div class="project-card fade-in">
@@ -936,33 +984,6 @@
           <span class="stack-tag">Mobile App</span>
           <span class="stack-tag">Biomarker Analysis</span>
         </div>
-      </div>
-
-      <div class="project-card fade-in">
-        <div class="project-tag">NEUROIMAGING PIPELINE</div>
-        <div class="project-title">NeuroSeg: Brain Tumor Segmentation</div>
-        <div class="project-desc">End-to-end U-Net segmentation pipeline trained on the BraTS public dataset. Multimodal MRI input with tumor subregion classification and interactive Streamlit demo.</div>
-        <div class="project-stack">
-          <span class="stack-tag">PyTorch</span>
-          <span class="stack-tag">UNet</span>
-          <span class="stack-tag">MONAI</span>
-          <span class="stack-tag">nibabel</span>
-          <span class="stack-tag">Streamlit</span>
-        </div>
-        <a href="https://github.com/hollyakt/neuroseg" target="_blank" class="project-link">View on GitHub →</a>
-      </div>
-
-      <div class="project-card fade-in">
-        <div class="project-tag">SURGICAL AI</div>
-        <div class="project-title">Surgical Tool Tracking System</div>
-        <div class="project-desc">Real-time instrument detection and temporal tracking across laparoscopic video frames using the Cholec80 dataset. Frame-level detection extended with multi-frame tracking for surgical workflow analysis.</div>
-        <div class="project-stack">
-          <span class="stack-tag">YOLOv8</span>
-          <span class="stack-tag">OpenCV</span>
-          <span class="stack-tag">PyTorch</span>
-          <span class="stack-tag">Cholec80</span>
-        </div>
-        <a href="https://github.com/hollyakt/surgical-tool-tracker" target="_blank" class="project-link">View on GitHub →</a>
       </div>
 
     </div>
