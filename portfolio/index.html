@@ -5,97 +5,339 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Healthcare Analytics Portfolio</title>
     <style>
+      :root {
+        --bg: #f4efe9;
+        --bg-strong: #ece3d7;
+        --panel: rgba(255,255,255,0.82);
+        --text: #1b1a1f;
+        --muted: #5e5a62;
+        --rose: #a85e7e;
+        --rose-soft: #f7eaf0;
+        --navy: #274d72;
+        --navy-soft: #edf3fb;
+        --sage: #5a7e6d;
+        --gold: #d9ab5b;
+        --border: rgba(23, 22, 27, 0.08);
+        --shadow: 0 18px 45px rgba(30, 26, 28, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
       body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #f7f4ef;
-        color: #1e1a1c;
+        background:
+          radial-gradient(circle at top left, rgba(168, 94, 126, 0.12), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(39, 77, 114, 0.12), transparent 32%),
+          var(--bg);
+        color: var(--text);
       }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 48px 20px 80px;
-      }
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 10px;
-      }
-      .subtitle {
-        color: #5b4b50;
-        font-size: 1.06rem;
-        max-width: 760px;
-        line-height: 1.6;
-        margin-bottom: 28px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-      }
-      .card {
-        background: white;
-        border: 1px solid rgba(0,0,0,0.08);
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-      }
-      .card img {
-        display: block;
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        background: #f0ebe6;
-      }
-      .card-body { padding: 18px 18px 20px; }
-      .tag {
-        display: inline-block;
-        font-size: 11px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        background: #f9eef3;
-        color: #8f4c6a;
-        padding: 6px 10px;
-        border-radius: 999px;
-        font-weight: 700;
-        margin-bottom: 12px;
-      }
-      h2 { margin: 0 0 8px; font-size: 1.5rem; }
-      p { margin: 0 0 12px; line-height: 1.55; color: #4c4347; }
-      .meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin: 0 0 16px;
-      }
-      .meta span {
-        font-size: 11px;
-        padding: 4px 8px;
-        border-radius: 12px;
-        background: #f3f2ef;
-        color: #5a5357;
-      }
-      .link {
-        color: #1b4d7c;
-        text-decoration: none;
-        font-weight: 700;
-      }
+
+      a { color: inherit; }
+
       .topbar {
-        background: #fff;
-        border-bottom: 1px solid rgba(0,0,0,0.08);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(244, 239, 233, 0.82);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
       }
+
       .topbar-inner {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 16px 20px;
+        padding: 18px 24px;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
-      .brand { text-decoration: none; color: #1e1a1c; font-weight: 700; }
-      .nav { display: flex; gap: 18px; }
-      .nav a { text-decoration: none; color: #4c4347; }
-      @media (max-width: 700px) {
-        h1 { font-size: 2.3rem; }
+
+      .brand {
+        text-decoration: none;
+        font-size: 0.9rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--rose);
+      }
+
+      .nav {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .nav a:hover {
+        color: var(--navy);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 42px 24px 90px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 28px;
+        align-items: stretch;
+        margin-bottom: 30px;
+      }
+
+      .hero-copy,
+      .hero-metrics {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-copy {
+        padding: 34px 30px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--rose-soft);
+        border: 1px solid rgba(168,94,126,0.18);
+        color: var(--rose);
+        font-size: 0.73rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        font-size: clamp(2.4rem, 4vw, 4.2rem);
+        line-height: 0.96;
+        margin: 0 0 18px;
+        letter-spacing: -0.06em;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.7;
+        max-width: 720px;
+        margin: 0;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .pill-btn,
+      .text-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .pill-btn {
+        padding: 12px 18px;
+        background: linear-gradient(135deg, var(--navy), #3c6f9f);
+        color: white;
+        box-shadow: 0 10px 22px rgba(39,77,114,0.22);
+      }
+
+      .text-btn {
+        padding: 12px 18px;
+        background: var(--navy-soft);
+        color: var(--navy);
+        border: 1px solid rgba(39,77,114,0.1);
+      }
+
+      .pill-btn:hover,
+      .text-btn:hover,
+      .card:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-metrics {
+        padding: 24px 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.9));
+      }
+
+      .metric {
+        padding: 18px 14px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.7);
+        border: 1px solid var(--border);
+        margin-bottom: 14px;
+      }
+
+      .metric:last-child { margin-bottom: 0; }
+
+      .metric-value {
+        font-size: 2rem;
+        letter-spacing: -0.06em;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .metric-label {
+        color: var(--muted);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+
+      .metric-value.rose { color: var(--rose); }
+      .metric-value.navy { color: var(--navy); }
+      .metric-value.sage { color: var(--sage); }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin: 18px 0 20px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: 2rem;
+        letter-spacing: -0.05em;
+      }
+
+      .section-header span {
+        color: var(--muted);
+        font-size: 0.82rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 22px;
+      }
+
+      .card {
+        background: rgba(255,255,255,0.8);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 16px 30px rgba(25,20,28,0.07);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 20px 40px rgba(25,20,28,0.1);
+      }
+
+      .card img {
+        display: block;
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #f0e8e1, #e2ebf9);
+      }
+
+      .card-body {
+        padding: 20px 18px 18px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        background: var(--rose-soft);
+        color: var(--rose);
+        padding: 7px 10px;
+        border-radius: 999px;
+        margin-bottom: 14px;
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+        line-height: 1.15;
+        letter-spacing: -0.04em;
+      }
+
+      .card p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 16px;
+      }
+
+      .meta span {
+        font-size: 0.68rem;
+        line-height: 1;
+        padding: 7px 9px;
+        background: #f2f2f3;
+        border-radius: 999px;
+        color: #544d55;
+        border: 1px solid rgba(26,23,27,0.05);
+      }
+
+      .link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--navy);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .link:after {
+        content: '→';
+        transition: transform 0.2s ease;
+      }
+
+      .card:hover .link:after {
+        transform: translateX(3px);
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
       }
     </style>
   </head>
@@ -111,20 +353,49 @@
     </div>
 
     <div class="container">
-      <h1>Healthcare Analytics Portfolio</h1>
-      <p class="subtitle">
-        Five recruiter-facing projects using real public health and healthcare data: Tableau dashboarding, BRFSS survey-weighted analysis in R, CFPB complaint analysis in Excel, CMS hospital performance in Power BI, and a REDCap abstraction database for liver research.
-      </p>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Healthcare analytics</div>
+          <h1>Data stories built for recruiters.</h1>
+          <p class="subtitle">
+            Five projects using real health and public data — from BRFSS survey methods and CFPB complaint analysis to CMS hospital performance and REDCap abstraction workflows.
+          </p>
+          <div class="hero-actions">
+            <a class="pill-btn" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio">Browse GitHub</a>
+            <a class="text-btn" href="../index.html">Back to home</a>
+          </div>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-value rose">5</div>
+            <div class="metric-label">portfolio projects</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value navy">3</div>
+            <div class="metric-label">core healthcare data sources</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value sage">1</div>
+            <div class="metric-label">clear narrative per project</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-header">
+        <h2>Featured work</h2>
+        <span>Analytics portfolio</span>
+      </div>
 
       <div class="grid">
         <article class="card">
           <img src="assets/heart-disease.png" alt="Heart disease dashboard preview" />
           <div class="card-body">
             <div class="tag">Tableau</div>
-            <h2>Heart disease deaths</h2>
-            <p>State map and trend dashboard of heart disease mortality across 50 states from 2015 to 2022.</p>
-            <div class="meta"><span>2015-2022</span><span>50 states</span></div>
-            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-01-tableau-heart-disease">View project →</a>
+            <h3>Heart disease deaths</h3>
+            <p>State map and trend dashboard highlighting long-run mortality differences across 50 states.</p>
+            <div class="meta"><span>2015–2022</span><span>50 states</span></div>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-01-tableau-heart-disease">View project</a>
           </div>
         </article>
 
@@ -132,10 +403,10 @@
           <img src="assets/brfss-checkup-gap.png" alt="BRFSS uninsurance and checkup gap graph" />
           <div class="card-body">
             <div class="tag">R + Survey</div>
-            <h2>BRFSS health disparities</h2>
-            <p>Survey-weighted regression showing the relationship between insurance and routine checkups by state.</p>
-            <div class="meta"><span>BRFSS 2022</span><span>survey design</span></div>
-            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-02-brfss-health-disparities-r">View project →</a>
+            <h3>BRFSS health disparities</h3>
+            <p>Survey-weighted regression measuring how insurance status is linked to routine preventive care access.</p>
+            <div class="meta"><span>BRFSS 2022</span><span>weighted analysis</span></div>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-02-brfss-health-disparities-r">View project</a>
           </div>
         </article>
 
@@ -143,10 +414,10 @@
           <img src="assets/debt-complaints.png" alt="Debt collection complaint preview" />
           <div class="card-body">
             <div class="tag">Excel</div>
-            <h2>Debt complaint analysis</h2>
-            <p>CFPB debt collection complaint analysis with top companies, issue themes, and on-time response summaries.</p>
+            <h3>Debt complaint analysis</h3>
+            <p>CFPB complaint review showing which companies, states, and issues drive debt collection volume and response delays.</p>
             <div class="meta"><span>CFPB</span><span>pivot charts</span></div>
-            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-03-excel-debt-complaints">View project →</a>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-03-excel-debt-complaints">View project</a>
           </div>
         </article>
 
@@ -154,10 +425,10 @@
           <img src="assets/pa-hospitals.png" alt="Pennsylvania hospital dashboard preview" />
           <div class="card-body">
             <div class="tag">Power BI</div>
-            <h2>Pennsylvania hospital performance</h2>
-            <p>CMS provider merge for ER wait times, readmission rates, and hospital-level quality metrics filtered to Pennsylvania.</p>
+            <h3>Pennsylvania hospital performance</h3>
+            <p>CMS provider merge showing ER wait time, readmission rate, and hospital quality patterns by Pennsylvania facility.</p>
             <div class="meta"><span>CMS</span><span>facility merge</span></div>
-            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-04-powerbi-pa-hospitals">View project →</a>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-04-powerbi-pa-hospitals">View project</a>
           </div>
         </article>
 
@@ -165,10 +436,10 @@
           <img src="assets/redcap-liver.png" alt="REDCap liver study preview" />
           <div class="card-body">
             <div class="tag">REDCap</div>
-            <h2>Liver study abstraction database</h2>
-            <p>Case report form design, validation checks, and synthetic chart abstraction workflow for a liver cohort study.</p>
-            <div class="meta"><span>25 records</span><span>quality checks</span></div>
-            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-05-redcap-liver-study">View project →</a>
+            <h3>Liver study abstraction</h3>
+            <p>Case report form with validation rules, branching logic, and clean abstraction workflow for a synthetic liver cohort.</p>
+            <div class="meta"><span>25 charts</span><span>quality checks</span></div>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-05-redcap-liver-study">View project</a>
           </div>
         </article>
       </div>
