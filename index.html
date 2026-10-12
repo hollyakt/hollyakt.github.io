@@ -521,6 +521,295 @@
 
   .project-link:hover { gap: 0.7rem; }
 
+  /* ── Portfolio dashboard ── */
+  .portfolio-shell {
+    background: rgba(244, 238, 232, 0.95);
+    border: 1px solid rgba(30, 26, 28, 0.08);
+    border-radius: 1.2rem;
+    box-shadow: 0 18px 38px rgba(24, 20, 18, 0.08);
+    overflow: hidden;
+  }
+
+  .portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.3rem 1.6rem 1rem;
+    border-bottom: 1px solid rgba(30, 26, 28, 0.08);
+    background: rgba(255,255,255,0.2);
+  }
+
+  .portfolio-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .portfolio-title strong {
+    display: block;
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.5rem, 2vw, 2.1rem);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--text);
+    margin-top: 0.35rem;
+    font-weight: 400;
+  }
+
+  .portfolio-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .toggle {
+    position: relative;
+    width: 42px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(122, 95, 160, 0.18);
+    border: 1px solid rgba(122, 95, 160, 0.09);
+  }
+
+  .toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .portfolio-body {
+    padding: 1.15rem 1.25rem 1.4rem;
+  }
+
+  .portfolio-overview {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .metric-panel {
+    background: rgba(255,255,255,0.42);
+    border: 1px solid rgba(30, 26, 28, 0.06);
+    border-radius: 0.8rem;
+    padding: 0.9rem 0.8rem;
+  }
+
+  .metric-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-row {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .metric-value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .metric-trend {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--rose);
+    background: var(--rose-soft);
+    border: 1px solid var(--rose-border);
+    border-radius: 999px;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .portfolio-main {
+    display: grid;
+    grid-template-columns: 1.15fr 1.3fr 1.05fr;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .panel {
+    background: rgba(255,255,255,0.4);
+    border: 1px solid rgba(30, 26, 28, 0.06);
+    border-radius: 0.9rem;
+    padding: 0.9rem 0.8rem;
+  }
+
+  .panel-header {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .spoke-list {
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .spoke-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  .spoke-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--rose);
+    display: inline-block;
+  }
+
+  .dot.navy { background: #4d6c8f; }
+  .dot.gold { background: #d1a064; }
+  .dot.sage { background: #6d8d7a; }
+
+  .bar-stack {
+    display: flex;
+    align-items: end;
+    gap: 0.5rem;
+    height: 118px;
+    padding-top: 0.4rem;
+  }
+
+  .bar {
+    flex: 1;
+    border-radius: 0.5rem 0.5rem 0 0;
+    background: linear-gradient(180deg, #d7b38d, #c27755);
+    min-height: 10px;
+  }
+
+  .bar.navy { background: linear-gradient(180deg, #9aaec1, #4d6c8f); }
+  .bar.gold { background: linear-gradient(180deg, #e9d0a5, #d1a064); }
+
+  .mini-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+  }
+
+  .ring {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(var(--rose) 0 42%, #c8b4aa 42% 66%, #4d6c8f 66% 100%);
+    position: relative;
+  }
+
+  .ring::before {
+    content: '';
+    position: absolute;
+    inset: 18px;
+    background: rgba(255,255,255,0.65);
+    border-radius: 50%;
+    border: 1px solid rgba(30,26,28,0.05);
+  }
+
+  .ring-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    color: var(--text);
+    z-index: 1;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(160px, 1fr));
+    gap: 0.7rem;
+  }
+
+  .project-mini {
+    background: rgba(255,255,255,0.42);
+    border: 1px solid rgba(30, 26, 28, 0.06);
+    border-radius: 0.8rem;
+    padding: 0.7rem 0.7rem 0.8rem;
+    min-height: 175px;
+  }
+
+  .mini-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .mini-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    margin-bottom: 0.45rem;
+  }
+
+  .mini-copy {
+    color: var(--text-muted);
+    font-size: 0.74rem;
+    line-height: 1.5;
+    margin-bottom: 0.7rem;
+  }
+
+  .mini-metric {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.45rem;
+    border-top: 1px solid rgba(30, 26, 28, 0.08);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .mini-metric strong {
+    color: var(--text);
+    font-size: 0.75rem;
+    letter-spacing: 0;
+  }
+
   /* ── Skills ── */
   .skills-grid {
     display: grid;
@@ -999,107 +1288,97 @@
 <!-- Healthcare analytics portfolio -->
 <div id="portfolio" class="section-wrap">
   <section>
-    <p class="section-label fade-in">03.5 — portfolio</p>
-    <h2 class="section-title fade-in">Healthcare analytics<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">case studies.</em></h2>
-
-    <div class="projects-featured">
-      <div class="project-card featured fade-in">
-        <img src="portfolio/assets/heart-disease.png" alt="Heart disease deaths dashboard preview" class="project-image" loading="lazy">
-        <div class="project-body">
-          <div class="project-tag">TABLEAU · PUBLIC HEALTH</div>
-          <div class="project-title">Heart disease deaths dashboard</div>
-          <div class="project-desc">State map and trend dashboard summarizing heart disease mortality patterns across 50 states, with a demographic filter for interpretable public-health comparisons.</div>
-          <div class="project-results">
-            <span class="result-chip"><strong>50</strong> states</span>
-            <span class="result-chip"><strong>2015–2022</strong></span>
-            <span class="result-chip">public health signal</span>
-          </div>
-          <div class="project-stack">
-            <span class="stack-tag">Tableau</span>
-            <span class="stack-tag">CDC</span>
-            <span class="stack-tag">Public health</span>
-          </div>
-          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-01-tableau-heart-disease" target="_blank" class="project-link">View project →</a>
-        </div>
+    <div class="portfolio-shell fade-in">
+      <div class="portfolio-header">
+        <div class="portfolio-title">Healthcare analytics dashboard<strong>Built for healthcare analyst roles</strong></div>
+        <div class="portfolio-toggle"><span>Show only attrition</span><span class="toggle"></span></div>
       </div>
 
-      <div class="project-card featured fade-in">
-        <img src="portfolio/assets/brfss-checkup-gap.png" alt="BRFSS health disparities preview" class="project-image" loading="lazy">
-        <div class="project-body">
-          <div class="project-tag">R · SURVEY METHODS</div>
-          <div class="project-title">BRFSS health disparities</div>
-          <div class="project-desc">Survey-weighted regression analysis examining whether insurance status is associated with missed routine preventive care by state.</div>
-          <div class="project-results">
-            <span class="result-chip"><strong>BRFSS 2022</strong></span>
-            <span class="result-chip">weighted regression</span>
-            <span class="result-chip">state comparisons</span>
+      <div class="portfolio-body">
+        <div class="portfolio-overview">
+          <div class="metric-panel">
+            <div class="metric-label">ER waits</div>
+            <div class="metric-row"><div class="metric-value">19.2%</div><div class="metric-trend">+4.1%</div></div>
           </div>
-          <div class="project-stack">
-            <span class="stack-tag">R</span>
-            <span class="stack-tag">survey</span>
-            <span class="stack-tag">ggplot2</span>
+          <div class="metric-panel">
+            <div class="metric-label">Readmissions</div>
+            <div class="metric-row"><div class="metric-value">13.8%</div><div class="metric-trend">+1.4%</div></div>
           </div>
-          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-02-brfss-health-disparities-r" target="_blank" class="project-link">View project →</a>
+          <div class="metric-panel">
+            <div class="metric-label">Hospitals</div>
+            <div class="metric-row"><div class="metric-value">130</div><div class="metric-trend">PA</div></div>
+          </div>
+          <div class="metric-panel">
+            <div class="metric-label">Findings</div>
+            <div class="metric-row"><div class="metric-value">5</div><div class="metric-trend">cases</div></div>
+          </div>
         </div>
-      </div>
 
-      <div class="project-card featured fade-in">
-        <img src="portfolio/assets/debt-complaints.png" alt="Debt collection complaint analysis preview" class="project-image" loading="lazy">
-        <div class="project-body">
-          <div class="project-tag">EXCEL · RISK</div>
-          <div class="project-title">Debt complaint analysis</div>
-          <div class="project-desc">CFPB complaint analysis quantifying the companies, states, and complaint categories driving debt collection dispute volume and delayed response rates.</div>
-          <div class="project-results">
-            <span class="result-chip">CFPB</span>
-            <span class="result-chip">pivot tables</span>
-            <span class="result-chip">response timing</span>
+        <div class="portfolio-main">
+          <div class="panel">
+            <div class="panel-header">Project mix</div>
+            <ul class="spoke-list">
+              <li class="spoke-item"><span class="spoke-name"><span class="dot"></span>Heart disease</span><strong>23%</strong></li>
+              <li class="spoke-item"><span class="spoke-name"><span class="dot navy"></span>BRFSS</span><strong>20%</strong></li>
+              <li class="spoke-item"><span class="spoke-name"><span class="dot gold"></span>CFPB debt</span><strong>17%</strong></li>
+              <li class="spoke-item"><span class="spoke-name"><span class="dot sage"></span>PA hospitals</span><strong>24%</strong></li>
+              <li class="spoke-item"><span class="spoke-name"><span class="dot"></span>REDCap</span><strong>16%</strong></li>
+            </ul>
           </div>
-          <div class="project-stack">
-            <span class="stack-tag">Excel</span>
-            <span class="stack-tag">XLOOKUP</span>
-            <span class="stack-tag">Pivot tables</span>
+
+          <div class="panel">
+            <div class="panel-header">Project signal</div>
+            <div class="mini-chart">
+              <div class="ring"><div class="ring-center">72%</div></div>
+            </div>
           </div>
-          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-03-excel-debt-complaints" target="_blank" class="project-link">View project →</a>
+
+          <div class="panel">
+            <div class="panel-header">Top stories</div>
+            <div class="bar-stack">
+              <div class="bar" style="height: 66%"></div>
+              <div class="bar navy" style="height: 72%"></div>
+              <div class="bar gold" style="height: 58%"></div>
+              <div class="bar" style="height: 80%"></div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="project-card featured fade-in">
-        <img src="portfolio/assets/pa-hospitals.png" alt="Pennsylvania hospital performance preview" class="project-image" loading="lazy">
-        <div class="project-body">
-          <div class="project-tag">POWER BI · HOSPITAL OPS</div>
-          <div class="project-title">Pennsylvania hospital performance</div>
-          <div class="project-desc">Merged CMS hospital files for Pennsylvania to analyze ER wait times, readmission trends, and facility-level variation by county and hospital type.</div>
-          <div class="project-results">
-            <span class="result-chip">CMS merge</span>
-            <span class="result-chip">PA filter</span>
-            <span class="result-chip">facility insights</span>
+        <div class="project-grid">
+          <div class="project-mini">
+            <div class="mini-tag">Tableau</div>
+            <div class="mini-title">Heart disease</div>
+            <div class="mini-copy">State map + trend analysis over 50 states.</div>
+            <div class="mini-metric"><span>View</span><strong>CDC</strong></div>
           </div>
-          <div class="project-stack">
-            <span class="stack-tag">Power BI</span>
-            <span class="stack-tag">CMS</span>
-            <span class="stack-tag">Power Query</span>
-          </div>
-          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-04-powerbi-pa-hospitals" target="_blank" class="project-link">View project →</a>
-        </div>
-      </div>
 
-      <div class="project-card featured fade-in">
-        <img src="portfolio/assets/redcap-liver.png" alt="REDCap liver study abstraction preview" class="project-image" loading="lazy">
-        <div class="project-body">
-          <div class="project-tag">REDCAP · STUDY OPS</div>
-          <div class="project-title">REDCap liver study abstraction</div>
-          <div class="project-desc">Synthetic chart abstraction database with branching logic, range checks, and a clean SOP covering data quality review for a clinical research workflow.</div>
-          <div class="project-results">
-            <span class="result-chip"><strong>25</strong> charts</span>
-            <span class="result-chip">validation rules</span>
-            <span class="result-chip">data quality</span>
+          <div class="project-mini">
+            <div class="mini-tag">R</div>
+            <div class="mini-title">BRFSS</div>
+            <div class="mini-copy">Survey-weighted checkup gap by insurance status.</div>
+            <div class="mini-metric"><span>View</span><strong>2022</strong></div>
           </div>
-          <div class="project-stack">
-            <span class="stack-tag">REDCap</span>
-            <span class="stack-tag">Synthea</span>
-            <span class="stack-tag">Data dictionary</span>
+
+          <div class="project-mini">
+            <div class="mini-tag">Excel</div>
+            <div class="mini-title">Debt complaints</div>
+            <div class="mini-copy">CFPB complaint drivers and response timing.</div>
+            <div class="mini-metric"><span>View</span><strong>CFPB</strong></div>
           </div>
-          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-05-redcap-liver-study" target="_blank" class="project-link">View project →</a>
+
+          <div class="project-mini">
+            <div class="mini-tag">Power BI</div>
+            <div class="mini-title">PA hospitals</div>
+            <div class="mini-copy">CMS merge on ER waits and readmission rates.</div>
+            <div class="mini-metric"><span>View</span><strong>CMS</strong></div>
+          </div>
+
+          <div class="project-mini">
+            <div class="mini-tag">REDCap</div>
+            <div class="mini-title">Liver study</div>
+            <div class="mini-copy">Synthetic chart abstraction and quality checks.</div>
+            <div class="mini-metric"><span>View</span><strong>25 charts</strong></div>
+          </div>
         </div>
       </div>
     </div>
