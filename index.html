@@ -645,6 +645,7 @@
     <li><a href="#about">about</a></li>
     <li><a href="#experience">research</a></li>
     <li><a href="#projects">projects</a></li>
+    <li><a href="#portfolio">portfolio</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
 </nav>
@@ -666,7 +667,7 @@
   </div>
   <div class="hero-links">
     <a href="https://github.com/hollyakt" target="_blank" class="btn btn-primary">GitHub ↗</a>
-    <a href="portfolio/index.html" class="btn btn-ghost">Portfolio ↗</a>
+    <a href="#portfolio" class="btn btn-ghost">Portfolio</a>
     <a href="mailto:holly.akati@gwu.edu" class="btn btn-ghost">Contact me</a>
   </div>
 </section>
@@ -989,6 +990,118 @@
         <a href="https://www.linkedin.com/posts/brendanmcgarr1869_this-past-weekend-i-had-the-pleasure-of-ugcPost-7305031368571277312-Zqtr/" target="_blank" rel="noopener" class="project-link">Team writeup on LinkedIn →</a>
       </div>
 
+    </div>
+  </section>
+</div>
+
+<hr class="section-divider">
+
+<!-- Healthcare analytics portfolio -->
+<div id="portfolio" class="section-wrap">
+  <section>
+    <p class="section-label fade-in">03.5 — portfolio</p>
+    <h2 class="section-title fade-in">Healthcare analytics<br><em style="font-family:'Instrument Serif',serif;font-style:italic;">case studies.</em></h2>
+
+    <div class="projects-featured">
+      <div class="project-card featured fade-in">
+        <img src="portfolio/assets/heart-disease.png" alt="Heart disease deaths dashboard preview" class="project-image" loading="lazy">
+        <div class="project-body">
+          <div class="project-tag">TABLEAU · PUBLIC HEALTH</div>
+          <div class="project-title">Heart disease deaths dashboard</div>
+          <div class="project-desc">State map and trend dashboard summarizing heart disease mortality patterns across 50 states, with a demographic filter for interpretable public-health comparisons.</div>
+          <div class="project-results">
+            <span class="result-chip"><strong>50</strong> states</span>
+            <span class="result-chip"><strong>2015–2022</strong></span>
+            <span class="result-chip">public health signal</span>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Tableau</span>
+            <span class="stack-tag">CDC</span>
+            <span class="stack-tag">Public health</span>
+          </div>
+          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-01-tableau-heart-disease" target="_blank" class="project-link">View project →</a>
+        </div>
+      </div>
+
+      <div class="project-card featured fade-in">
+        <img src="portfolio/assets/brfss-checkup-gap.png" alt="BRFSS health disparities preview" class="project-image" loading="lazy">
+        <div class="project-body">
+          <div class="project-tag">R · SURVEY METHODS</div>
+          <div class="project-title">BRFSS health disparities</div>
+          <div class="project-desc">Survey-weighted regression analysis examining whether insurance status is associated with missed routine preventive care by state.</div>
+          <div class="project-results">
+            <span class="result-chip"><strong>BRFSS 2022</strong></span>
+            <span class="result-chip">weighted regression</span>
+            <span class="result-chip">state comparisons</span>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">R</span>
+            <span class="stack-tag">survey</span>
+            <span class="stack-tag">ggplot2</span>
+          </div>
+          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-02-brfss-health-disparities-r" target="_blank" class="project-link">View project →</a>
+        </div>
+      </div>
+
+      <div class="project-card featured fade-in">
+        <img src="portfolio/assets/debt-complaints.png" alt="Debt collection complaint analysis preview" class="project-image" loading="lazy">
+        <div class="project-body">
+          <div class="project-tag">EXCEL · RISK</div>
+          <div class="project-title">Debt complaint analysis</div>
+          <div class="project-desc">CFPB complaint analysis quantifying the companies, states, and complaint categories driving debt collection dispute volume and delayed response rates.</div>
+          <div class="project-results">
+            <span class="result-chip">CFPB</span>
+            <span class="result-chip">pivot tables</span>
+            <span class="result-chip">response timing</span>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Excel</span>
+            <span class="stack-tag">XLOOKUP</span>
+            <span class="stack-tag">Pivot tables</span>
+          </div>
+          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-03-excel-debt-complaints" target="_blank" class="project-link">View project →</a>
+        </div>
+      </div>
+
+      <div class="project-card featured fade-in">
+        <img src="portfolio/assets/pa-hospitals.png" alt="Pennsylvania hospital performance preview" class="project-image" loading="lazy">
+        <div class="project-body">
+          <div class="project-tag">POWER BI · HOSPITAL OPS</div>
+          <div class="project-title">Pennsylvania hospital performance</div>
+          <div class="project-desc">Merged CMS hospital files for Pennsylvania to analyze ER wait times, readmission trends, and facility-level variation by county and hospital type.</div>
+          <div class="project-results">
+            <span class="result-chip">CMS merge</span>
+            <span class="result-chip">PA filter</span>
+            <span class="result-chip">facility insights</span>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Power BI</span>
+            <span class="stack-tag">CMS</span>
+            <span class="stack-tag">Power Query</span>
+          </div>
+          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-04-powerbi-pa-hospitals" target="_blank" class="project-link">View project →</a>
+        </div>
+      </div>
+
+      <div class="project-card featured fade-in">
+        <img src="portfolio/assets/redcap-liver.png" alt="REDCap liver study abstraction preview" class="project-image" loading="lazy">
+        <div class="project-body">
+          <div class="project-tag">REDCAP · STUDY OPS</div>
+          <div class="project-title">REDCap liver study abstraction</div>
+          <div class="project-desc">Synthetic chart abstraction database with branching logic, range checks, and a clean SOP covering data quality review for a clinical research workflow.</div>
+          <div class="project-results">
+            <span class="result-chip"><strong>25</strong> charts</span>
+            <span class="result-chip">validation rules</span>
+            <span class="result-chip">data quality</span>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">REDCap</span>
+            <span class="stack-tag">Synthea</span>
+            <span class="stack-tag">Data dictionary</span>
+          </div>
+          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-05-redcap-liver-study" target="_blank" class="project-link">View project →</a>
+        </div>
+      </div>
     </div>
   </section>
 </div>
