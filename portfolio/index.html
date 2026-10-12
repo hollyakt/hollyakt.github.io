@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthcare Analytics Portfolio</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f7f4ef;
+        color: #1e1a1c;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 48px 20px 80px;
+      }
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+      .subtitle {
+        color: #5b4b50;
+        font-size: 1.06rem;
+        max-width: 760px;
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      .card {
+        background: white;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      }
+      .card img {
+        display: block;
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        background: #f0ebe6;
+      }
+      .card-body { padding: 18px 18px 20px; }
+      .tag {
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: #f9eef3;
+        color: #8f4c6a;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      h2 { margin: 0 0 8px; font-size: 1.5rem; }
+      p { margin: 0 0 12px; line-height: 1.55; color: #4c4347; }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 0 0 16px;
+      }
+      .meta span {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 12px;
+        background: #f3f2ef;
+        color: #5a5357;
+      }
+      .link {
+        color: #1b4d7c;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .topbar {
+        background: #fff;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+      }
+      .topbar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand { text-decoration: none; color: #1e1a1c; font-weight: 700; }
+      .nav { display: flex; gap: 18px; }
+      .nav a { text-decoration: none; color: #4c4347; }
+      @media (max-width: 700px) {
+        h1 { font-size: 2.3rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="../index.html">Holly Akati</a>
+        <div class="nav">
+          <a href="../index.html">Home</a>
+          <a href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1>Healthcare Analytics Portfolio</h1>
+      <p class="subtitle">
+        Five recruiter-facing projects using real public health and healthcare data: Tableau dashboarding, BRFSS survey-weighted analysis in R, CFPB complaint analysis in Excel, CMS hospital performance in Power BI, and a REDCap abstraction database for liver research.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <img src="assets/heart-disease.png" alt="Heart disease dashboard preview" />
+          <div class="card-body">
+            <div class="tag">Tableau</div>
+            <h2>Heart disease deaths</h2>
+            <p>State map and trend dashboard of heart disease mortality across 50 states from 2015 to 2022.</p>
+            <div class="meta"><span>2015-2022</span><span>50 states</span></div>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-01-tableau-heart-disease">View project →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="assets/brfss-checkup-gap.png" alt="BRFSS uninsurance and checkup gap graph" />
+          <div class="card-body">
+            <div class="tag">R + Survey</div>
+            <h2>BRFSS health disparities</h2>
+            <p>Survey-weighted regression showing the relationship between insurance and routine checkups by state.</p>
+            <div class="meta"><span>BRFSS 2022</span><span>survey design</span></div>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-02-brfss-health-disparities-r">View project →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="assets/debt-complaints.png" alt="Debt collection complaint preview" />
+          <div class="card-body">
+            <div class="tag">Excel</div>
+            <h2>Debt complaint analysis</h2>
+            <p>CFPB debt collection complaint analysis with top companies, issue themes, and on-time response summaries.</p>
+            <div class="meta"><span>CFPB</span><span>pivot charts</span></div>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-03-excel-debt-complaints">View project →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="assets/pa-hospitals.png" alt="Pennsylvania hospital dashboard preview" />
+          <div class="card-body">
+            <div class="tag">Power BI</div>
+            <h2>Pennsylvania hospital performance</h2>
+            <p>CMS provider merge for ER wait times, readmission rates, and hospital-level quality metrics filtered to Pennsylvania.</p>
+            <div class="meta"><span>CMS</span><span>facility merge</span></div>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-04-powerbi-pa-hospitals">View project →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="assets/redcap-liver.png" alt="REDCap liver study preview" />
+          <div class="card-body">
+            <div class="tag">REDCap</div>
+            <h2>Liver study abstraction database</h2>
+            <p>Case report form design, validation checks, and synthetic chart abstraction workflow for a liver cohort study.</p>
+            <div class="meta"><span>25 records</span><span>quality checks</span></div>
+            <a class="link" href="https://github.com/hollyakt/Data-Science-Projects/tree/main/portfolio/project-05-redcap-liver-study">View project →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
